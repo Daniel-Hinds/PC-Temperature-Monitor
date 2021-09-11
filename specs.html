@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="id=edge">
+        <title>Monitor</title>
+        <link rel="stylesheet" href="styles.css">
+
+    <head>
+
+        <header>
+          <script type = "text/javascript" src="index.js"></script>
+            <nav>
+                <ul>
+                  <li>
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                    <a href="cpu.html">CPU</a>
+                  </li>
+                  <li>
+                    <a href="gpu.html">GPU</a>
+                  </li>
+                  <li>
+                    <a>Specs</a>
+                  </li>
+                  <li>
+                    <a href="setting.html">Settings</a>
+                  </li>
+                </ul>
+              </nav>
+        </header>
+
+    <body>
+        <div>
+          <h1>CPU Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Manufacturer: </label>
+          <label id="CPUMANUFACTURER"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">Brand: </label>
+          <label id="CPUBRAND"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">Clock Speed: </label>
+          <label id="CPUSPEED"></label>
+          <br>
+        </div>
+        <div>
+          <h1>GPU Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Manufacturer: </label>
+          <label id="GPUMANUFACTURER"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">Brand: </label>
+          <label id="GPUBRAND"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">VRAM: </label>
+          <label id="GPUMEMORY"></label>
+        </div>
+        <div>
+          <h1>Motherboard Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Manufacturer: </label>
+          <label id="MBOMANUFACTURER"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">Model: </label>
+          <label id="MBOMODEL"></label>
+        </div>
+        <div>
+          <h1>OS Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Version: </label>
+          <label id="osVersion"></label>
+        </div>
+        <div>
+          <h1>RAM Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Total Memory: </label>
+          <label id="RAMTOTAL"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">Clockspeed: </label>
+          <label id="RAMSPEED"></label>
+        </div>
+        <div>
+          <h1>Storage Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Names: </label>
+          <label id="DRIVENAMES"></label>
+        </div>
+        <div>
+          <h1>Bios Specifications</h1>
+          <label style="font-weight: bold; font-size: 20px;">Version: </label>
+          <label id="BIOSVERSION"></label>
+          <br>
+          <label style="font-weight: bold; font-size: 20px;">Date: </label>
+          <label id="BIOSDATE"></label>
+        </div>
+
+        <script>
+          window.onload = getInfo();
+        </script>
+
+    </body>
+
+</html>

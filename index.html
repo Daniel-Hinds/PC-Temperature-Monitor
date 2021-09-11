@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="id=edge">
+        <title style="text-align: center">Monitor</title>
+        <link rel="stylesheet" href="styles.css"> 
+    <head>
+      <style>
+        body {
+          overflow-x: hidden;
+        }
+      </style>
+
+    <header>
+        <nav>
+            <ul>
+              <li>
+                <a>Home</a>
+              </li>
+              <li>
+                <a href="cpu.html">CPU</a>
+              </li>
+              <li>
+                <a href="gpu.html">GPU</a>
+              </li>
+              <li>
+                <a href="specs.html">Specs</a>
+              </li>
+              <li>
+                <a href="setting.html">Settings</a>
+              </li>
+            </ul>
+          </nav>
+    </header>
+    
+
+    <body>
+      <script type = "text/javascript" src="index.js"></script>
+
+      <h1 style="position: fixed; margin-top: 507px; margin-left: 820px;">Drive 1</h1>
+      <div class="circle-wrapD1" style="position: fixed; margin-top: 450px; margin-left: 950px;">
+        <div class="circle">
+          
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+         
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          
+          <div class="inside-circle">
+            <label id="DRIVE1"></label>
+          </div>
+          
+        </div>
+      </div>
+
+    <div class="D2">
+      <h1 style="position: fixed; margin-top: 307px; margin-left: 820px;">Drive 2</h1>
+      <div class="circle-wrapD2" style="position: fixed; margin-top: 250px; margin-left: 950px;">
+        <div class="circle">
+          
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+         
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          
+          <div class="inside-circle">
+            <label id="DRIVE2"></label>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+      
+    <div class="D3">
+      <h1 style="position: fixed; margin-top: 107px; margin-left: 820px;">Drive 3</h1>
+      <div class="circle-wrapD3" style="position: fixed; margin-top: 50px; margin-left: 950px;">
+        <div class="circle">
+          
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+         
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          
+          <div class="inside-circle">
+            <label id="DRIVE3"></label>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+      
+      <h1 style="position: fixed; top: 120px; left: 150px; z-index: 2;" id="GPUheader">GPU</h1>
+      <button class="popoutButton" style="position: fixed; left: 154px; top: 290px; z-index: 1;" onclick=openGPUpopout();>Popout</button>
+      <div class="circle-wrapGPU" style="position: fixed; top: 140px; left: 107px;">
+        <div class="circle">
+          
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+         
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          
+          <div class="inside-circle">
+            <label id="GPUtemps"></label>
+          </div>
+          
+        </div>
+      </div>
+
+      <h1 style="position: fixed; top: 120px; left: 545px; z-index: 1;">CPU</h1>
+      <button class="popoutButton" style="position: fixed; left: 548px; top: 290px; z-index: 2;" onclick=openCPUpopout();>Popout</button>
+      <div class="circle-wrapCPU" style="position: fixed; top: 140px; left: 500px;">
+        <div class="circle">
+          
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+         
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          
+          <div class="inside-circle">
+            <label id="CPUtemps"></label>
+          </div>
+          
+        </div>
+      </div>
+
+      <h1 style="position: fixed; margin-top: 300px; margin-left: 290px; z-index: 1;">RAM LOAD</h1>
+      <button class="popoutButton" style="position: fixed; margin-left: 347px; margin-top: 450px; z-index: 2;" onclick=openRAMpopout();>Popout</button>
+      <div class="circle-wrapRAM" style="position: fixed; margin-top: 350px; margin-left: 300px;">
+        <div class="circle">
+          
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+         
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          
+          <div class="inside-circle">
+            <label id="RAMloads"></label>
+          </div>
+          
+        </div>
+      </div>
+        <script src="https://unpkg.com/vanilla-picker@2"></script>
+
+        <div style="max-width: 75px; margin-left: 25px; margin-top: 300px; position: fixed;">
+          <div style="font-size: 15px; border-style: solid;" id="parent">Change Guage Colours</div>
+        </div>
+        
+        <script>
+          var parent = document.querySelector('#parent');
+          var picker = new Picker(parent);
+
+          picker.onChange = function(color) {
+            document.documentElement.style.setProperty('--GuageColour', color.rgbaString);
+          };
+          picker.onDone = function(color){
+            localStorage.setItem("GuageColour", color.rgbaString)
+          }
+        </script>
+        <script>
+          window.onload=setGuageColour();
+          window.onload=document.documentElement.style.setProperty('--BUTTONVIS', 'visible');
+          window.onload=updateHomeGuages();getDRIVEpercent();
+          window.onload=setInterval( function() {updateHomeGuages();}, localStorage.getItem("guageInterval") );
+          window.onload=setInterval( function() {getDRIVEpercent();}, localStorage.getItem("diskInterval") );
+        </script>
+        <script>
+          // for electron
+          if (typeof require !== 'undefined') {
+              const currentWebContents = require('electron').remote.getCurrentWebContents();
+              document.addEventListener('keyup', ({ key, ctrlKey, shiftKey, metaKey, altKey }) => {
+                  if (
+                      key === 'F12' ||
+                      (ctrlKey && shiftKey && key === 'I') ||
+                      (metaKey && altKey && key === 'i')
+                  ) {
+                      currentWebContents.openDevTools();
+                  }
+              });
+          }
+      </script>
+      </body>
+</html>
