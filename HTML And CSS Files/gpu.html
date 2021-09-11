@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="id=edge">
+        
+        <link rel="stylesheet" href="styles.css">
+    <head>
+      <style>
+        body {
+          overflow-x: hidden;
+          overflow-y: hidden;
+        }
+      </style>
+
+        <header>
+          <title>Monitor</title>
+
+            <nav>
+                <ul>
+                  <li>
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                    <a href="cpu.html">CPU</a>
+                  </li>
+                  <li>
+                    <a>GPU</a>
+                  </li>
+                  <li>
+                    <a href="specs.html">Specs</a>
+                  </li>
+                  <li>
+                    <a href="setting.html">Settings</a>
+                  </li>
+                </ul>
+              </nav>
+        </header>
+
+    <body>
+      <script type = "text/javascript" src="index.js"></script>
+      <h1>GPU</h1>
+
+      <div style="position: absolute; height:100vh; width: 130vh; margin: 0 auto">
+
+
+
+        <canvas id="GPUchart" style="margin: 0 auto; margin: 0;"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+
+        var ctx = document.getElementById('GPUchart').getContext('2d');
+          var GPUchart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'line',
+
+          // The data for our dataset
+          data: {
+            labels: labels,
+            datasets: [{
+            label: 'GPU Temperature',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: GPUtemperature
+            }]
+          },
+
+          // Configuration options go here
+        options: {
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Temperature'
+              }
+            }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Time In Minutes'
+              }
+            }]
+          },
+        annotation: {
+          annotations: [
+          {
+            type: "line",
+            mode: "vertical",
+            scaleID: "xAxes",
+            value: "1",
+            borderColor: "red",
+            label: {
+              content: "TODAY",
+              enabled: true,
+              position: "top"
+            }
+          }
+        ]
+      }
+        }
+        });
+        </script>
+
+       </div>
+
+    </body>
+
+</html>
